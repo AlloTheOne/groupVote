@@ -8,14 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var name = ""
     var body: some View {
+        
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+           Header()
+            
+                
+            VStack {
+                
+                
+                CustomLargeTitle(title: "Enter Your Name So Your Friends know You")
+                
+                CustomTextField(input: name, label: "Name", placeholder: "Name")
+                Spacer()
+                
+                CustomLargeButton(title: "Continue") {
+                    // action
+                }
+                
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
+        .background(Color("BGGrey"))
+        .ignoresSafeArea()
     }
 }
 
