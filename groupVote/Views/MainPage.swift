@@ -27,7 +27,7 @@ struct MainPage: View {
                     .foregroundColor(.gray)
                     .padding()
             }
-            
+            Spacer()
             CustomLargeTitle(title: "Or Join One:")
             
             VStack {

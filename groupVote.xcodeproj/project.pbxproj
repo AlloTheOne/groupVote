@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90DC9D682A758ACC00FE5B9E /* groupVoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D672A758ACC00FE5B9E /* groupVoteApp.swift */; };
-		90DC9D6A2A758ACC00FE5B9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D692A758ACC00FE5B9E /* ContentView.swift */; };
+		90DC9D6A2A758ACC00FE5B9E /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D692A758ACC00FE5B9E /* Auth.swift */; };
 		90DC9D6C2A758ACD00FE5B9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DC9D6B2A758ACD00FE5B9E /* Assets.xcassets */; };
 		90DC9D702A758ACD00FE5B9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DC9D6F2A758ACD00FE5B9E /* Preview Assets.xcassets */; };
 		90DC9D782A758B8E00FE5B9E /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D772A758B8E00FE5B9E /* Header.swift */; };
@@ -19,12 +19,22 @@
 		90DC9D872A76DD8600FE5B9E /* EnterMerchantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D862A76DD8600FE5B9E /* EnterMerchantName.swift */; };
 		90DC9D8A2A76DEFE00FE5B9E /* JoinMerchantName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D892A76DEFE00FE5B9E /* JoinMerchantName.swift */; };
 		90DC9D8C2A76DF2700FE5B9E /* WaitingForOthers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D8B2A76DF2700FE5B9E /* WaitingForOthers.swift */; };
+		90DC9D8E2A791F6800FE5B9E /* WaitingButSomeoneJoined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D8D2A791F6800FE5B9E /* WaitingButSomeoneJoined.swift */; };
+		90DC9D912A79276200FE5B9E /* Voting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D902A79276200FE5B9E /* Voting.swift */; };
+		90DC9D932A792A1300FE5B9E /* Winner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D922A792A1300FE5B9E /* Winner.swift */; };
+		90DC9D982A7ECA4400FE5B9E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D972A7ECA4400FE5B9E /* User.swift */; };
+		90FB6F7D2A7ECC8D004F5CEF /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F7C2A7ECC8D004F5CEF /* Group.swift */; };
+		90FB6F7F2A7ECD31004F5CEF /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F7E2A7ECD31004F5CEF /* Merchant.swift */; };
+		90FB6F822A7ECDD9004F5CEF /* User_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F812A7ECDD9004F5CEF /* User_Group.swift */; };
+		90FB6F842A7ECE3E004F5CEF /* Merchant_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F832A7ECE3E004F5CEF /* Merchant_Group.swift */; };
+		90FB6F862A7ECF88004F5CEF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */; };
+		90FB6F882A7ED600004F5CEF /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F872A7ED600004F5CEF /* WebAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		90DC9D642A758ACC00FE5B9E /* groupVote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = groupVote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DC9D672A758ACC00FE5B9E /* groupVoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupVoteApp.swift; sourceTree = "<group>"; };
-		90DC9D692A758ACC00FE5B9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		90DC9D692A758ACC00FE5B9E /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		90DC9D6B2A758ACD00FE5B9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90DC9D6D2A758ACD00FE5B9E /* groupVote.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = groupVote.entitlements; sourceTree = "<group>"; };
 		90DC9D6F2A758ACD00FE5B9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -36,6 +46,16 @@
 		90DC9D862A76DD8600FE5B9E /* EnterMerchantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMerchantName.swift; sourceTree = "<group>"; };
 		90DC9D892A76DEFE00FE5B9E /* JoinMerchantName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinMerchantName.swift; sourceTree = "<group>"; };
 		90DC9D8B2A76DF2700FE5B9E /* WaitingForOthers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForOthers.swift; sourceTree = "<group>"; };
+		90DC9D8D2A791F6800FE5B9E /* WaitingButSomeoneJoined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingButSomeoneJoined.swift; sourceTree = "<group>"; };
+		90DC9D902A79276200FE5B9E /* Voting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Voting.swift; sourceTree = "<group>"; };
+		90DC9D922A792A1300FE5B9E /* Winner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winner.swift; sourceTree = "<group>"; };
+		90DC9D972A7ECA4400FE5B9E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		90FB6F7C2A7ECC8D004F5CEF /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		90FB6F7E2A7ECD31004F5CEF /* Merchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
+		90FB6F812A7ECDD9004F5CEF /* User_Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User_Group.swift; sourceTree = "<group>"; };
+		90FB6F832A7ECE3E004F5CEF /* Merchant_Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant_Group.swift; sourceTree = "<group>"; };
+		90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		90FB6F872A7ED600004F5CEF /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				90DC9D672A758ACC00FE5B9E /* groupVoteApp.swift */,
-				90DC9D692A758ACC00FE5B9E /* ContentView.swift */,
-				90DC9D7F2A76D52900FE5B9E /* MainPage.swift */,
-				90DC9D842A76DD4900FE5B9E /* Create */,
-				90DC9D852A76DD5600FE5B9E /* Join */,
+				90DC9D942A7EC63000FE5B9E /* Models */,
+				90DC9D962A7EC64B00FE5B9E /* Views */,
+				90DC9D952A7EC63B00FE5B9E /* View Models */,
 				90DC9D762A758B7200FE5B9E /* Component */,
 				90DC9D6B2A758ACD00FE5B9E /* Assets.xcassets */,
 				90DC9D6D2A758ACD00FE5B9E /* groupVote.entitlements */,
@@ -105,6 +124,7 @@
 			children = (
 				90DC9D862A76DD8600FE5B9E /* EnterMerchantName.swift */,
 				90DC9D8B2A76DF2700FE5B9E /* WaitingForOthers.swift */,
+				90DC9D8D2A791F6800FE5B9E /* WaitingButSomeoneJoined.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -115,6 +135,48 @@
 				90DC9D892A76DEFE00FE5B9E /* JoinMerchantName.swift */,
 			);
 			path = Join;
+			sourceTree = "<group>";
+		};
+		90DC9D8F2A79274800FE5B9E /* Voting */ = {
+			isa = PBXGroup;
+			children = (
+				90DC9D902A79276200FE5B9E /* Voting.swift */,
+				90DC9D922A792A1300FE5B9E /* Winner.swift */,
+			);
+			path = Voting;
+			sourceTree = "<group>";
+		};
+		90DC9D942A7EC63000FE5B9E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				90DC9D972A7ECA4400FE5B9E /* User.swift */,
+				90FB6F7C2A7ECC8D004F5CEF /* Group.swift */,
+				90FB6F7E2A7ECD31004F5CEF /* Merchant.swift */,
+				90FB6F812A7ECDD9004F5CEF /* User_Group.swift */,
+				90FB6F832A7ECE3E004F5CEF /* Merchant_Group.swift */,
+				90FB6F872A7ED600004F5CEF /* WebAPI.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		90DC9D952A7EC63B00FE5B9E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		90DC9D962A7EC64B00FE5B9E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90DC9D692A758ACC00FE5B9E /* Auth.swift */,
+				90DC9D7F2A76D52900FE5B9E /* MainPage.swift */,
+				90DC9D8F2A79274800FE5B9E /* Voting */,
+				90DC9D842A76DD4900FE5B9E /* Create */,
+				90DC9D852A76DD5600FE5B9E /* Join */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,15 +250,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				90DC9D7A2A76C09400FE5B9E /* CustomTextField.swift in Sources */,
-				90DC9D6A2A758ACC00FE5B9E /* ContentView.swift in Sources */,
+				90DC9D6A2A758ACC00FE5B9E /* Auth.swift in Sources */,
+				90DC9D932A792A1300FE5B9E /* Winner.swift in Sources */,
+				90FB6F7D2A7ECC8D004F5CEF /* Group.swift in Sources */,
 				90DC9D7E2A76D01800FE5B9E /* CustomLargeButton.swift in Sources */,
 				90DC9D872A76DD8600FE5B9E /* EnterMerchantName.swift in Sources */,
+				90FB6F862A7ECF88004F5CEF /* AuthViewModel.swift in Sources */,
 				90DC9D8A2A76DEFE00FE5B9E /* JoinMerchantName.swift in Sources */,
+				90DC9D982A7ECA4400FE5B9E /* User.swift in Sources */,
 				90DC9D7C2A76CF1700FE5B9E /* CustomLargeTitle.swift in Sources */,
 				90DC9D8C2A76DF2700FE5B9E /* WaitingForOthers.swift in Sources */,
 				90DC9D782A758B8E00FE5B9E /* Header.swift in Sources */,
+				90FB6F7F2A7ECD31004F5CEF /* Merchant.swift in Sources */,
 				90DC9D802A76D52900FE5B9E /* MainPage.swift in Sources */,
+				90FB6F822A7ECDD9004F5CEF /* User_Group.swift in Sources */,
+				90FB6F882A7ED600004F5CEF /* WebAPI.swift in Sources */,
 				90DC9D682A758ACC00FE5B9E /* groupVoteApp.swift in Sources */,
+				90DC9D912A79276200FE5B9E /* Voting.swift in Sources */,
+				90DC9D8E2A791F6800FE5B9E /* WaitingButSomeoneJoined.swift in Sources */,
+				90FB6F842A7ECE3E004F5CEF /* Merchant_Group.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

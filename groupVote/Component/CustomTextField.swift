@@ -14,15 +14,16 @@ struct CustomTextField: View {
     var body: some View {
         LabeledContent {
             TextField(placeholder, text: $input)
-            
+                .foregroundColor(.white)
         } label: {
             Text(label)
                 .padding(.horizontal)
+                
         }
         .padding()
         .background(Color("TextFColor"))
         .cornerRadius(10)
-        .padding(.vertical)
+//        .padding(.vertical)
     }
 }
 

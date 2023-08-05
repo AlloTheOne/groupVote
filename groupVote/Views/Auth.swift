@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  Auth.swift
 //  groupVote
 //
 //  Created by Alaa . on 29/07/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct Auth: View {
     @State var name = ""
     var body: some View {
         
@@ -19,8 +19,9 @@ struct ContentView: View {
                 
                 
                 CustomLargeTitle(title: "Enter Your Name So Your Friends know You")
-                
+                    .padding(.top)
                 CustomTextField(input: name, label: "Name", placeholder: "Name")
+                    .padding(.top, 40)
                 Spacer()
                 
                 CustomLargeButton(title: "Continue") {
@@ -32,12 +33,12 @@ struct ContentView: View {
             .padding()
         }
         .background(Color("BGGrey"))
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Auth()
     }
 }
