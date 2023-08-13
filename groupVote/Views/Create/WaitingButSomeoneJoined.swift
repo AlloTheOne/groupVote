@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WaitingButSomeoneJoined: View {
     @State var groupJoinID = "6789456"
+    @State var text = ""
     let pasteboard = UIPasteboard.general
     var body: some View {
         VStack {
@@ -20,7 +21,7 @@ struct WaitingButSomeoneJoined: View {
             CustomLargeTitle(title: " Group ID:")
             
             HStack {
-                CustomTextField(input: groupJoinID, label: "", placeholder: "")
+                CustomTextField(input: $groupJoinID, label: "", placeholder: "")
                    
                 // copy button
                 Button {
@@ -35,8 +36,8 @@ struct WaitingButSomeoneJoined: View {
             Divider()
                 .padding()
             VStack {
-                CustomTextField(input: "Walaa Joined", label: "", placeholder: "")
-                CustomTextField(input: "Jumana Joined", label: "", placeholder: "")
+                CustomTextField(input: $text, label: "", placeholder: "")
+                CustomTextField(input: $text, label: "", placeholder: "")
                 
             }
             .padding(.horizontal)

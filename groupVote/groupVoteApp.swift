@@ -12,7 +12,22 @@ struct groupVoteApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            WaitingForOthers()
+//            WaitingForOthers()
+            // if actoken != nil
+//
+            if WebAPI.userSignedIn() {
+                MainPage()
+//                    .onAppear {
+//                        print("main",WebAPI.accessToken)
+//                    }
+            } else {
+                Auth()
+//                    .onAppear {
+//                        print("authh",WebAPI.accessToken)
+//                    }
+            }
+            // mainpage
+                
         }
     }
 }

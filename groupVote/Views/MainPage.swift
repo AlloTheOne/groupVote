@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainPage: View {
     @State var join_id = ""
+    @State var showEnterMerchantName = false
     var body: some View {
         VStack {
             Header(name: "Alaa")
@@ -18,7 +19,8 @@ struct MainPage: View {
             CustomLargeTitle(title: "Create Group Vote")
             
             Button {
-                // action
+                // show merchant form
+                showEnterMerchantName = true
             } label: {
                 Image(systemName: "arrow.right.circle")
                     .resizable()
@@ -27,11 +29,14 @@ struct MainPage: View {
                     .foregroundColor(.gray)
                     .padding()
             }
+            .fullScreenCover(isPresented: $showEnterMerchantName) {
+                EnterMerchantName()
+            }
             Spacer()
             CustomLargeTitle(title: "Or Join One:")
             
             VStack {
-                CustomTextField(input: join_id, label: "", placeholder: "Enter Group ID")
+                CustomTextField(input: $join_id, label: "", placeholder: "Enter Group ID")
                 
                 CustomLargeButton(title: "Join") {
                     // action
@@ -41,6 +46,9 @@ struct MainPage: View {
             Spacer()
         }
         .background(Color("BGGrey"))
+        .onAppear {
+            print(WebAPI.accessToken)
+        }
     }
 }
 

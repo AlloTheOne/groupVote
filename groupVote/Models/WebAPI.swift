@@ -21,8 +21,6 @@ struct WebAPI {
       case invalidResponse
       case httpError(statusCode: Int)
     }
-
-   
 }
 
 

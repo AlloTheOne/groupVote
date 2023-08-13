@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct Auth: View {
-    @State var name = ""
+    @State var name = String()
+    @State var goToMainPage = false
     var body: some View {
         
         VStack {
@@ -20,12 +21,26 @@ struct Auth: View {
                 
                 CustomLargeTitle(title: "Enter Your Name So Your Friends know You")
                     .padding(.top)
-                CustomTextField(input: name, label: "Name", placeholder: "Name")
+                CustomTextField(input: $name, label: "Name", placeholder: "Name")
                     .padding(.top, 40)
                 Spacer()
                 
                 CustomLargeButton(title: "Continue") {
-                    // action
+                    // create user + token
+                    WebAPI.authorize(name: name) { res in
+                        switch res {
+                        case .success(let success):
+                            print(success)
+                            goToMainPage = true
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+//                    WebAPI.userSignedIn()
+                    
+                }
+                .fullScreenCover(isPresented: $goToMainPage) {
+                    MainPage()
                 }
                 
                 Spacer()

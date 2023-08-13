@@ -8,7 +8,7 @@
 import SwiftUI
 
 class AuthViewModel: ObservableObject {
-    @Published var users = User(id: UUID(), name: "")
+    @Published var users = User(id: UUID(), name: String())
     
     
 }
@@ -17,29 +17,22 @@ extension WebAPI {
     static func userSignedIn() -> Bool {
          if ((self.accessToken?.isEmpty) == nil) {
              accessToken = UserDefaults.standard.string(forKey: "accessToken")
+//             print("access token", accessToken)
          }
         guard self.accessToken != nil
          else {
+            print("not signed in")
              return false
          }
+        print("signed in")
         return true
      }
     
     static func authorize(
-      identityToken: Data?,
       name: String,
-      completion: @escaping (Result<User, Error>) -> Void
+      completion: @escaping (Result<Token, Error>) -> Void
     ) {
 
-      guard let identityToken = identityToken else {
-        completion(.failure(WebAPIError.identityTokenMissing))
-        return
-      }
-
-      guard let identityTokenString = String(data: identityToken, encoding: .utf8) else {
-        completion(.failure(WebAPIError.unableToDecodeIdentityToken))
-        return
-      }
 
       let body = UserInput(name: name)
 
@@ -56,13 +49,28 @@ extension WebAPI {
 
       session.uploadTask(with: request, from: jsonBody) { (data, response, error) in
         do {
-          let userResponse: UserResponse = try parseResponse(response, data: data, error: error)
-          accessToken = userResponse.accessToken
-           UserDefaults.standard.set(self.accessToken, forKey: "accessToken")
-          completion(.success(userResponse.user))
-        } catch {
-          completion(.failure(error))
-        }
+            if let error = error {
+              throw error
+            }
+              guard let httpResponse = response as? HTTPURLResponse else {
+                throw WebAPIError.invalidResponse
+              }
+              if !(200...299).contains(httpResponse.statusCode) {
+                throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+              }
+              guard let data = data,
+              let decoded = try? JSONDecoder().decode(Token.self, from: data)
+              else {
+                  print("here")
+                throw WebAPIError.unableToDecodeJSONData
+              }
+            accessToken = decoded.value
+            UserDefaults.standard.set(self.accessToken, forKey: "accessToken")
+
+    completion(.success(decoded))
+} catch {
+    completion(.failure(error))
+}
       }.resume()
     }
     

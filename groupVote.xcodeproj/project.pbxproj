@@ -29,6 +29,8 @@
 		90FB6F842A7ECE3E004F5CEF /* Merchant_Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F832A7ECE3E004F5CEF /* Merchant_Group.swift */; };
 		90FB6F862A7ECF88004F5CEF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */; };
 		90FB6F882A7ED600004F5CEF /* WebAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F872A7ED600004F5CEF /* WebAPI.swift */; };
+		90FB6F8A2A7EE489004F5CEF /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F892A7EE489004F5CEF /* GroupViewModel.swift */; };
+		90FB6F8C2A7EE89D004F5CEF /* MerchantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB6F8B2A7EE89D004F5CEF /* MerchantViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		90FB6F832A7ECE3E004F5CEF /* Merchant_Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant_Group.swift; sourceTree = "<group>"; };
 		90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		90FB6F872A7ED600004F5CEF /* WebAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAPI.swift; sourceTree = "<group>"; };
+		90FB6F892A7EE489004F5CEF /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
+		90FB6F8B2A7EE89D004F5CEF /* MerchantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				90FB6F852A7ECF88004F5CEF /* AuthViewModel.swift */,
+				90FB6F892A7EE489004F5CEF /* GroupViewModel.swift */,
+				90FB6F8B2A7EE89D004F5CEF /* MerchantViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -257,9 +263,11 @@
 				90DC9D872A76DD8600FE5B9E /* EnterMerchantName.swift in Sources */,
 				90FB6F862A7ECF88004F5CEF /* AuthViewModel.swift in Sources */,
 				90DC9D8A2A76DEFE00FE5B9E /* JoinMerchantName.swift in Sources */,
+				90FB6F8A2A7EE489004F5CEF /* GroupViewModel.swift in Sources */,
 				90DC9D982A7ECA4400FE5B9E /* User.swift in Sources */,
 				90DC9D7C2A76CF1700FE5B9E /* CustomLargeTitle.swift in Sources */,
 				90DC9D8C2A76DF2700FE5B9E /* WaitingForOthers.swift in Sources */,
+				90FB6F8C2A7EE89D004F5CEF /* MerchantViewModel.swift in Sources */,
 				90DC9D782A758B8E00FE5B9E /* Header.swift in Sources */,
 				90FB6F7F2A7ECD31004F5CEF /* Merchant.swift in Sources */,
 				90DC9D802A76D52900FE5B9E /* MainPage.swift in Sources */,

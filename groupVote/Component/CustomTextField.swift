@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomTextField: View {
-    @State var input = ""
+    @Binding var input: String
     @State var label = ""
     @State var placeholder = ""
     var body: some View {
@@ -27,8 +27,8 @@ struct CustomTextField: View {
     }
 }
 
-struct CustomTextField_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTextField()
-    }
-}
+//struct CustomTextField_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomTextField(input: input)
+//    }
+//}

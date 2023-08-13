@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct JoinMerchantName: View {
+    @State var text = ""
     var body: some View {
         VStack {
             Header()
@@ -15,7 +16,7 @@ struct JoinMerchantName: View {
             VStack {
                 CustomLargeTitle(title: "Join Group Vote")
                 
-                CustomTextField(input: "", label: "Name", placeholder: "Restaurant’s Name")
+                CustomTextField(input: $text, label: "Name", placeholder: "Restaurant’s Name")
                 
                 // plus sign button
                 

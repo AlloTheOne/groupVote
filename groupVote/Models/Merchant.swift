@@ -13,3 +13,8 @@ struct Merchant: Identifiable, Codable {
     let name: String
     let votes: Int
 }
+
+struct MerchantResponse: Codable {
+    let accessToken: String?
+    let merchant: Merchant
+}

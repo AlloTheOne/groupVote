@@ -8,8 +8,17 @@
 import Foundation
 
 
-struct Merchant_Group: Identifiable, Codable {
-    let id: UUID?
-    let merchantID: Merchant
-    let groupID: Group
+struct Merchant_Group: Codable {
+//    let id: UUID?
+    let merchantID: UUID
+    let groupID: UUID
+}
+
+struct MerchantInput: Codable {
+    let name: String
+}
+
+struct Merchant_GroupResponse: Codable {
+//    let accessToken: String?
+    let merchant_group: Merchant_Group
 }

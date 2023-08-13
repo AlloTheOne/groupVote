@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct WaitingForOthers: View {
-    @State var groupJoinID = "6789456"
+    @Binding var groupID: UUID
+    @State var groupJoinID = Int()
+    @State var text = ""
     let pasteboard = UIPasteboard.general
+    @State var stringJoin_id = ""
     var body: some View {
         VStack {
             Header()
@@ -20,11 +23,11 @@ struct WaitingForOthers: View {
             CustomLargeTitle(title: " Group ID:")
             
             HStack {
-                CustomTextField(input: groupJoinID, label: "", placeholder: "")
+                CustomTextField(input: $stringJoin_id, label: "", placeholder: "")
                    
                 // copy button
                 Button {
-                    pasteboard.string = groupJoinID
+                    pasteboard.string = stringJoin_id
                 } label: {
                     Image(systemName: "doc.on.clipboard.fill")
                                         .foregroundColor(.white)
@@ -57,11 +60,22 @@ struct WaitingForOthers: View {
             Spacer()
         }
         .background(Color("BGGrey"))
+        // on appear get group / merchant by ids
+        .onAppear {
+            WebAPI.getGroupByID(groupID: groupID) { res in
+                switch res {
+                case .success(let success):
+                    stringJoin_id = String(success.join_id)
+                case .failure(let failure):
+                    print("failed getting group:", failure)
+                }
+            }
+        }
     }
 }
 
-struct WaitingForOthers_Previews: PreviewProvider {
-    static var previews: some View {
-        WaitingForOthers()
-    }
-}
+//struct WaitingForOthers_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WaitingForOthers()
+//    }
+//}

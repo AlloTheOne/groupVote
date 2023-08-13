@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct User: Identifiable, Codable {
-    let id: UUID?
+struct User: Codable {
+    let id: UUID
     let name: String
 }
 
@@ -22,3 +22,7 @@ struct UserResponse: Codable {
 }
 
 
+struct Token: Codable {
+    let value: String?
+//    let userID: User
+}

@@ -30,6 +30,7 @@ struct Header: View {
             .background(Color("HeaderGrey"))
 //            Spacer()
         }
+        // on appear get me
     }
 }
 
