@@ -27,7 +27,7 @@ extension WebAPI {
 //    }
     // MARK: - join group 
     static func joinGroup(join_id: Int,
-                          completion: @escaping (Result<Group, Error>) -> Void ) {
+                          completion: @escaping (Result<BaseGroup, Error>) -> Void ) {
 //        if ((self.accessToken?.isEmpty) == nil) {
 //            accessToken = UserDefaults.standard.string(forKey: "accessToken")
 //        }
@@ -58,11 +58,12 @@ extension WebAPI {
     
     // get group
     static func getGroupByID(groupID: UUID,
-                             completion: @escaping (Result<Group, Error>) -> Void) {
+                             completion: @escaping (Result<BaseGroup, Error>) -> Void) {
         guard let accessToken = self.accessToken else {
               completion(.failure(WebAPIError.unauthorized))
               return
         }
+        print("group id in get group", groupID)
         let session = URLSession.shared
         let url = URL(string: "\(baseURL)/api/groups/\(groupID)")!
         var request = URLRequest(url: url)
@@ -72,9 +73,21 @@ extension WebAPI {
         
         session.dataTask(with: request) { (data, response, error) in
             do {
-                let orderResponse: GroupResponse = try parseResponse(response, data: data, error: error)
-                
-                completion(.success(orderResponse.group))
+                if let error = error {
+                  throw error
+                }
+                  guard let httpResponse = response as? HTTPURLResponse else {
+                    throw WebAPIError.invalidResponse
+                  }
+                  if !(200...299).contains(httpResponse.statusCode) {
+                    throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+                  }
+                  guard let data = data,
+                  let decoded = try? JSONDecoder().decode(BaseGroup.self, from: data)
+                  else {
+                    throw WebAPIError.unableToDecodeJSONData
+                  }
+                completion(.success(decoded))
             } catch {
                 completion(.failure(error))
             }
@@ -82,7 +95,7 @@ extension WebAPI {
     }
     // get all group stuff
     static func getAllGroupStuffByID(groupID: UUID,
-                             completion: @escaping (Result<Group, Error>) -> Void) {
+                             completion: @escaping (Result<BaseMerchant_Group, Error>) -> Void) {
         guard let accessToken = self.accessToken else {
               completion(.failure(WebAPIError.unauthorized))
               return
@@ -96,9 +109,21 @@ extension WebAPI {
         
         session.dataTask(with: request) { (data, response, error) in
             do {
-                let orderResponse: GroupResponse = try parseResponse(response, data: data, error: error)
-                
-                completion(.success(orderResponse.group))
+                if let error = error {
+                  throw error
+                }
+                  guard let httpResponse = response as? HTTPURLResponse else {
+                    throw WebAPIError.invalidResponse
+                  }
+                  if !(200...299).contains(httpResponse.statusCode) {
+                    throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+                  }
+                  guard let data = data,
+                  let decoded = try? JSONDecoder().decode(BaseMerchant_Group.self, from: data)
+                  else {
+                    throw WebAPIError.unableToDecodeJSONData
+                  }
+                completion(.success(decoded))
             } catch {
                 completion(.failure(error))
             }

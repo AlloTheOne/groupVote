@@ -9,9 +9,9 @@ import Foundation
 
 struct Merchant: Identifiable, Codable {
     let id: UUID?
-    let userID: User
-    let name: String
-    let votes: Int
+//    let userID: User
+//    let name: String
+//    let votes: Int
 }
 
 struct MerchantResponse: Codable {

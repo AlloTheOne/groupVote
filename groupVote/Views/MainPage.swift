@@ -10,6 +10,7 @@ import SwiftUI
 struct MainPage: View {
     @State var join_id = ""
     @State var showEnterMerchantName = false
+    @State var showJoinForm = false
     var body: some View {
         VStack {
             Header(name: "Alaa")
@@ -39,7 +40,23 @@ struct MainPage: View {
                 CustomTextField(input: $join_id, label: "", placeholder: "Enter Group ID")
                 
                 CustomLargeButton(title: "Join") {
-                    // action
+                    // show join merchant form
+                    // slide in join id
+                    
+                    WebAPI.joinGroup(join_id: Int(join_id) ?? 0) { res in
+                        switch res {
+                        case .success(let success):
+                            print(success)
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
+                    
+                    showJoinForm = true
+                    
+                }
+                .fullScreenCover(isPresented: $showJoinForm) {
+                    JoinMerchantName(join_id: join_id)
                 }
             }
             .padding()
@@ -47,7 +64,7 @@ struct MainPage: View {
         }
         .background(Color("BGGrey"))
         .onAppear {
-            print(WebAPI.accessToken)
+            
         }
     }
 }

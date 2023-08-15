@@ -37,6 +37,7 @@ struct WaitingForOthers: View {
             .padding(.horizontal)
             Divider()
                 .padding()
+            // if no users this
             VStack {
                 Image(systemName: "arrow.counterclockwise")
                     .resizable()
@@ -49,10 +50,12 @@ struct WaitingForOthers: View {
                     .lineLimit(1)
             }
             .padding()
+            // else get users
             
             
             
             Spacer()
+            // if someone joined activate 
             CustomLargeButton(title: "Start") {
                 // action
             }
@@ -66,6 +69,7 @@ struct WaitingForOthers: View {
                 switch res {
                 case .success(let success):
                     stringJoin_id = String(success.join_id)
+                    print(success)
                 case .failure(let failure):
                     print("failed getting group:", failure)
                 }

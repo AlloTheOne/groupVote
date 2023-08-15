@@ -9,14 +9,23 @@ import Foundation
 
 struct Group: Identifiable, Codable {
     let id: UUID?
-    let join_id: Int
+//    let join_id: Int
+//    let type: String?
+//    let tie: Bool
+//    let close: Bool
+//    let end: Bool
+}
+// remove this
+struct GroupInput: Codable {
     let type: String?
     let tie: Bool
     let close: Bool
     let end: Bool
 }
-// remove this
-struct GroupInput: Codable {
+
+struct BaseGroup: Codable {
+    let id: UUID?
+    let join_id: Int
     let type: String?
     let tie: Bool
     let close: Bool
@@ -28,6 +37,6 @@ struct JoinGroup: Codable {
 }
 
 struct GroupResponse: Codable {
-    let accessToken: String?
-    let group: Group
+//    let accessToken: String?
+    let group: BaseGroup
 }

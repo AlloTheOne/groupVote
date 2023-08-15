@@ -61,7 +61,6 @@ extension WebAPI {
               guard let data = data,
               let decoded = try? JSONDecoder().decode(Token.self, from: data)
               else {
-                  print("here")
                 throw WebAPIError.unableToDecodeJSONData
               }
             accessToken = decoded.value

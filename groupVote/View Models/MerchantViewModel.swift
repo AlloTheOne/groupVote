@@ -21,7 +21,7 @@ extension WebAPI {
         }
         
         let body = MerchantInput(name: name)
-        
+        print("name:", name)
         guard let jsonBody = try? JSONEncoder().encode(body) else {
           completion(.failure(WebAPIError.unableToEncodeJSONData))
           return
@@ -45,12 +45,13 @@ extension WebAPI {
                   if !(200...299).contains(httpResponse.statusCode) {
                     throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
                   }
+                
                   guard let data = data,
                   let decoded = try? JSONDecoder().decode(Merchant_Group.self, from: data)
                   else {
                     throw WebAPIError.unableToDecodeJSONData
                   }
-               
+                print("here again", decoded)
                 completion(.success(decoded))
             } catch {
                 completion(.failure(error))
