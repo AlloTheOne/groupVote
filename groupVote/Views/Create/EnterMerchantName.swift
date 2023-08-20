@@ -37,7 +37,7 @@ struct EnterMerchantName: View {
 //                                return
 //                            }
                             if success.group.id != nil {
-                                self.groupID = success.group.id!
+                                self.groupID = success.group.id
                                 print("inside if")
                             }
 //                            else {

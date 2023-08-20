@@ -15,16 +15,20 @@ struct Merchant_Group: Identifiable, Codable {
 }
 
 struct BaseMerchant_Group: Codable {
-    let id: UUID
+//    let id: UUID
     let merchant: BaseMerchant
     let group: Group
 }
 
 struct BaseMerchant: Codable {
     let id: UUID?
-    let userID: User
+    let user: BaseUser
     let name: String
     let votes: Int
+}
+
+struct BaseUser: Codable {
+    let id: UUID
 }
 
 //struct

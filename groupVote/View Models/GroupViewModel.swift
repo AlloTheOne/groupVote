@@ -95,11 +95,12 @@ extension WebAPI {
     }
     // get all group stuff
     static func getAllGroupStuffByID(groupID: UUID,
-                             completion: @escaping (Result<BaseMerchant_Group, Error>) -> Void) {
+                             completion: @escaping (Result<[BaseMerchant_Group], Error>) -> Void) {
         guard let accessToken = self.accessToken else {
               completion(.failure(WebAPIError.unauthorized))
               return
         }
+        print("group id in function:", groupID)
         let session = URLSession.shared
         let url = URL(string: "\(baseURL)/api/groups/all/\(groupID)")!
         var request = URLRequest(url: url)
@@ -119,7 +120,44 @@ extension WebAPI {
                     throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
                   }
                   guard let data = data,
-                  let decoded = try? JSONDecoder().decode(BaseMerchant_Group.self, from: data)
+                  let decoded = try? JSONDecoder().decode([BaseMerchant_Group].self, from: data)
+                  else {
+                    throw WebAPIError.unableToDecodeJSONData
+                  }
+                completion(.success(decoded))
+            } catch {
+                completion(.failure(error))
+            }
+          }.resume()
+    }
+    
+    static func getAllUsersByID(groupID: UUID,
+                             completion: @escaping (Result<[User], Error>) -> Void) {
+        guard let accessToken = self.accessToken else {
+              completion(.failure(WebAPIError.unauthorized))
+              return
+        }
+//        print("group id in function:", groupID)
+        let session = URLSession.shared
+        let url = URL(string: "\(baseURL)/api/groups/users/\(groupID)")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        session.dataTask(with: request) { (data, response, error) in
+            do {
+                if let error = error {
+                  throw error
+                }
+                  guard let httpResponse = response as? HTTPURLResponse else {
+                    throw WebAPIError.invalidResponse
+                  }
+                  if !(200...299).contains(httpResponse.statusCode) {
+                    throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+                  }
+                  guard let data = data,
+                  let decoded = try? JSONDecoder().decode([User].self, from: data)
                   else {
                     throw WebAPIError.unableToDecodeJSONData
                   }

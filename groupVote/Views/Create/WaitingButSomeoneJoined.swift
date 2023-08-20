@@ -15,7 +15,6 @@ struct WaitingButSomeoneJoined: View {
         VStack {
             Header()
             
-            
             CustomLargeTitle(title: " Group Vote")
             
             CustomLargeTitle(title: " Group ID:")

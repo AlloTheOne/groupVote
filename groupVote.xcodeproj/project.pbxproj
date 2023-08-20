@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		908E7EF32A9186BB00364D50 /* RefreshableScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 908E7EF22A9186BB00364D50 /* RefreshableScrollView */; };
 		90DC9D682A758ACC00FE5B9E /* groupVoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D672A758ACC00FE5B9E /* groupVoteApp.swift */; };
 		90DC9D6A2A758ACC00FE5B9E /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DC9D692A758ACC00FE5B9E /* Auth.swift */; };
 		90DC9D6C2A758ACD00FE5B9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90DC9D6B2A758ACD00FE5B9E /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				908E7EF32A9186BB00364D50 /* RefreshableScrollView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +203,9 @@
 			dependencies = (
 			);
 			name = groupVote;
+			packageProductDependencies = (
+				908E7EF22A9186BB00364D50 /* RefreshableScrollView */,
+			);
 			productName = groupVote;
 			productReference = 90DC9D642A758ACC00FE5B9E /* groupVote.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +234,9 @@
 				Base,
 			);
 			mainGroup = 90DC9D5B2A758ACC00FE5B9E;
+			packageReferences = (
+				908E7EF12A9186BB00364D50 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */,
+			);
 			productRefGroup = 90DC9D652A758ACC00FE5B9E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -490,6 +498,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		908E7EF12A9186BB00364D50 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Q42/RefreshableScrollView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		908E7EF22A9186BB00364D50 /* RefreshableScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 908E7EF12A9186BB00364D50 /* XCRemoteSwiftPackageReference "RefreshableScrollView" */;
+			productName = RefreshableScrollView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90DC9D5C2A758ACC00FE5B9E /* Project object */;
 }

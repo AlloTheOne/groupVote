@@ -8,7 +8,7 @@
 import Foundation
 
 struct Group: Identifiable, Codable {
-    let id: UUID?
+    let id: UUID
 //    let join_id: Int
 //    let type: String?
 //    let tie: Bool
