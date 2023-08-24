@@ -46,9 +46,21 @@ extension WebAPI {
         
         session.dataTask(with: request) { (data, response, error) in
             do {
-                let orderResponse: GroupResponse = try parseResponse(response, data: data, error: error)
-                
-                completion(.success(orderResponse.group))
+                if let error = error {
+                  throw error
+                }
+                  guard let httpResponse = response as? HTTPURLResponse else {
+                    throw WebAPIError.invalidResponse
+                  }
+                  if !(200...299).contains(httpResponse.statusCode) {
+                    throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+                  }
+                  guard let data = data,
+                  let decoded = try? JSONDecoder().decode(BaseGroup.self, from: data)
+                  else {
+                    throw WebAPIError.unableToDecodeJSONData
+                  }
+                completion(.success(decoded))
             } catch {
                 completion(.failure(error))
             }
@@ -167,4 +179,53 @@ extension WebAPI {
             }
           }.resume()
     }
+    //update group
+    static func updateGroup(groupID: UUID, tie: Bool?, close: Bool?, end: Bool?, completion: @escaping (Result<Group, Error>) -> Void) {
+        guard let accessToken = self.accessToken else {
+              completion(.failure(WebAPIError.unauthorized))
+              return
+        }
+        let body = UpdateGroupInput(groupID: groupID, tie: tie, close: close, end: end)
+        
+        
+        guard let jsonBody = try? JSONEncoder().encode(body) else {
+          completion(.failure(WebAPIError.unableToEncodeJSONData))
+          return
+        }
+        let session = URLSession.shared
+        let url = URL(string: "\(baseURL)/api/groups")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        session.uploadTask(with: request, from: jsonBody) { (data, response, error) in
+            do {
+                if let error = error {
+                  throw error
+                }
+                  guard let httpResponse = response as? HTTPURLResponse else {
+                    throw WebAPIError.invalidResponse
+                  }
+                  if !(200...299).contains(httpResponse.statusCode) {
+                    throw WebAPIError.httpError(statusCode: httpResponse.statusCode)
+                  }
+                  guard let data = data,
+                  let decoded = try? JSONDecoder().decode(Group.self, from: data)
+                  else {
+                    throw WebAPIError.unableToDecodeJSONData
+                  }
+                completion(.success(decoded))
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
+}
+
+struct UpdateGroupInput: Codable {
+    let groupID: UUID
+    var tie: Bool?
+    var close: Bool?
+    var end: Bool?
 }

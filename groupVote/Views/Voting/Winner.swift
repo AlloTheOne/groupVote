@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct Winner: View {
+    @State var winnerMer = ""
+    @State var groupID = UUID()
     var body: some View {
         NavigationView {
             
             
             VStack {
                 Spacer()
-                CustomLargeTitle(title: "McDonald's")
+                Text(winnerMer)
+                    .font(.largeTitle)
+                    .bold()
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.white)
+                    .padding()
                 
                 CustomLargeTitle(title: "Won!")
                 Spacer()
@@ -33,6 +40,17 @@ struct Winner: View {
             .padding()
             .background(Color("BGGrey"))
 //            .scaledToFill()
+        }
+        .onAppear {
+            WebAPI.getWinnerMerchant(groupID: groupID) { res in
+                switch res {
+                case .success(let success):
+                    print("winner merchant", success)
+                    winnerMer = success.name
+                case .failure(let failure):
+                    print("failed getting winner merchant", failure)
+                }
+            }
         }
 //        .padding()
     }

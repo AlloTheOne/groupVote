@@ -10,6 +10,8 @@ import SwiftUI
 struct JoinMerchantName: View {
     @State var join_id = ""
     @State var text = ""
+    @Binding var groupID: UUID
+    @State var showWaitingRoom = false
     var body: some View {
         VStack {
             Header()
@@ -23,7 +25,21 @@ struct JoinMerchantName: View {
                 
                 Spacer()
                 CustomLargeButton(title: "Create") {
-                    // action
+                    // create merchant
+                    WebAPI.postMerchant(name: text, groupID: groupID) { res in
+                        print(groupID)
+                        print(text)
+                        switch res {
+                        case .success(let success):
+                            print("merchant posted",success)
+                            showWaitingRoom = true
+                        case .failure(let failure):
+                            print("failed posting merchant",failure)
+                        }
+                    }
+                }
+                .fullScreenCover(isPresented: $showWaitingRoom) {
+                    WaitingForOthers(groupID: $groupID)
                 }
                 Spacer()
             }
@@ -47,8 +63,8 @@ struct JoinMerchantName: View {
     }
 }
 
-struct JoinMerchantName_Previews: PreviewProvider {
-    static var previews: some View {
-        JoinMerchantName()
-    }
-}
+//struct JoinMerchantName_Previews: PreviewProvider {
+//    static var previews: some View {
+//        JoinMerchantName()
+//    }
+//}

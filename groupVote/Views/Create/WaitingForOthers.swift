@@ -16,6 +16,7 @@ struct WaitingForOthers: View {
     @State var stringJoin_id = ""
     @State var namesArray: [String] = []
     @State var noOfUsers = 0
+    @State var showVotingPage = false
     var body: some View {
         
             VStack {
@@ -71,7 +72,20 @@ struct WaitingForOthers: View {
                 // if someone joined activate
                 CustomLargeButton(title: "Start") {
                     // action
+                    // update close
+                    WebAPI.updateGroup(groupID: groupID, tie: false, close: true, end: false) { res in
+                        switch res {
+                        case .success(let success):
+                            print("update group",success)
+                            showVotingPage = true
+                        case .failure(let failure):
+                            print("failed updating",failure)
+                        }
+                    }
                 }
+                .fullScreenCover(isPresented: $showVotingPage, content: {
+                    Voting(groupID: groupID)
+                })
                 .padding()
                 Spacer()
                
@@ -81,16 +95,16 @@ struct WaitingForOthers: View {
             // on appear get group / merchant by ids
         // on drag get joined users
             .refreshable {
-                WebAPI.getAllGroupStuffByID(groupID: groupID) { res in
-                    switch res {
-                    case .success(let success):
-                        print("refresh")
-                        print(success)
-                    case .failure(let failure):
-                        print("refresh fail")
-                        print(failure)
-                    }
-                }
+//                WebAPI.getAllGroupStuffByID(groupID: groupID) { res in
+//                    switch res {
+//                    case .success(let success):
+//                        print("refresh")
+//                        print(success)
+//                    case .failure(let failure):
+//                        print("refresh fail")
+//                        print(failure)
+//                    }
+//                }
                 WebAPI.getAllUsersByID(groupID: groupID) { res in
                     switch res {
                     case .success(let success):
@@ -115,7 +129,7 @@ struct WaitingForOthers: View {
                     switch res {
                     case .success(let success):
                         stringJoin_id = String(success.join_id)
-                        print(success)
+                        print("here",success)
                     case .failure(let failure):
                         print("failed getting group:", failure)
                     }

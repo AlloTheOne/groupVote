@@ -11,6 +11,7 @@ struct MainPage: View {
     @State var join_id = ""
     @State var showEnterMerchantName = false
     @State var showJoinForm = false
+    @State var groupID = UUID()
     var body: some View {
         VStack {
             Header(name: "Alaa")
@@ -46,9 +47,10 @@ struct MainPage: View {
                     WebAPI.joinGroup(join_id: Int(join_id) ?? 0) { res in
                         switch res {
                         case .success(let success):
-                            print(success)
+                            print("joined group",success)
+                            groupID = success.id!
                         case .failure(let failure):
-                            print(failure)
+                            print("failed joining",failure)
                         }
                     }
                     
@@ -56,7 +58,7 @@ struct MainPage: View {
                     
                 }
                 .fullScreenCover(isPresented: $showJoinForm) {
-                    JoinMerchantName(join_id: join_id)
+                    JoinMerchantName(groupID: $groupID)
                 }
             }
             .padding()
